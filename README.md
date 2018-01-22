@@ -44,13 +44,9 @@ export default ()=>(<Provider db={dburl}>
 import {connect} from 'react-node-realtime-db'
 
 const App = (props)=>{
-  const { data } = props
-  // const { a, b } = props
+  const { a, b } = props
   return (<p>{JSON.stringify(data)}</p>)
 }
-
-export default connect('/path/key')(App)
-//export default connect({a:'/path/a',b:'/b'})(App)
-
+export default connect({a:'/path/a',b:'/b'})(App)
 
 ```
