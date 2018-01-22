@@ -2,7 +2,14 @@
 
 realtime database for nodejs, specially for react. I mean firebase-lite or redux-server
 
-## usage
+## server side
+
+```
+var app = require('http').createServer(handler)
+require('node-realtime-db')(app, { db:'memory' })
+```
+
+## client side
 
 ```
 import Db from 'node-realtime-db'
