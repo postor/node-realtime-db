@@ -7,8 +7,15 @@ class Db {
     this.io = io
     this.adapter = new Adapter(initalData)
     this.io.on(`${eventPrifix}get`, async ({ path }) => {
-      const value = this.get(path)
+      const value = await this.get(path)
       this.io.emit(`${eventPrifix}get`, {
+        path,
+        value,
+      })
+    })
+    this.io.on(`${eventPrifix}set`, async ({ path, value }) => {
+      await this.set(path, value)
+      this.io.emit(`${eventPrifix}set`, {
         path,
         value,
       })

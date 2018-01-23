@@ -23,6 +23,19 @@ class Db {
     })
   }
 
+  async set(path, value) {
+    return new Promise((resolve, reject) => {
+      const cb = (data) => {
+        if (data.path == path) {
+          this.io.removeListener(`${eventPrifix}set`, cb)
+          resolve(data.value)
+        }
+      }
+      this.io.on(`${eventPrifix}set`, cb)
+      this.io.emit(`${eventPrifix}set`, { path, value })
+    })
+  }
+
   watch(path, cb) {
     let watching = true
     this.get(path).then((value) => {
