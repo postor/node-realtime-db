@@ -4,7 +4,7 @@
   "description": "realtime database for nodejs, specially for react. I mean firebase-lite or redux-server",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run build && node dist/test/index.js",
     "build": "babel src -d dist"
   },
   "repository": {
@@ -21,8 +21,10 @@
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.5.2",
-    "babel-preset-stage-2": "^6.24.1"
+    "babel-preset-stage-2": "^6.24.1",
+    "express": "^4.16.2"
   },
   "dependencies": {
     "object-path": "^0.11.4",

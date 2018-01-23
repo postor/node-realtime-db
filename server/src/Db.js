@@ -10,7 +10,7 @@ class Db {
 
   async set(path, value) {
     await this.adapter.set(path, value)
-    io.emit(`${eventPrifix}update`, {
+    this.io.emit(`${eventPrifix}update`, {
       path,
       value,
     })
