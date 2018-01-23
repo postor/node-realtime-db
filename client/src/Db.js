@@ -7,6 +7,7 @@ class Db {
   constructor(url, options = {}) {
     this.io = io(url, options)
     this.data = {}
+    this.changeListenners = []
   }
 
   async get(path) {
@@ -14,7 +15,7 @@ class Db {
       const cb = (data) => {
         if (data.path == path) {
           this.io.removeListener(`${eventPrifix}get`, cb)
-          objectPath.set(data.path, data.value)
+          objectPath.set(this.data, data.path, data.value)
           resolve(data.value)
         }
       }
@@ -44,8 +45,9 @@ class Db {
 
     const onUpdate = (data) => {
       if (data.path.startsWith(path)) {
-        objectPath.set(data.path, data.value)
-        cb(objectPath.get(path))
+        objectPath.set(this.data, data.path, data.value)
+        this.changeListenners.forEach(x => x(this.data))
+        cb(objectPath.get(this.data, path))
       }
     }
 
@@ -56,4 +58,15 @@ class Db {
       this.io.removeListener(`${eventPrifix}update`, onUpdate)
     }
   }
+
+  onChange(cb) {
+    this.changeListenners.push(cb)
+  }
+
+  unbindChange(cb) {
+    const index = this.changeListenners.indexOf(cb)
+    this.changeListenners.splice(index, 1)
+  }
 }
+
+export default Db

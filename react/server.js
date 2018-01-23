@@ -13,7 +13,7 @@ app.prepare()
   .then(() => {
     const server = express()
     const http = Server(server)
-    rtdb.default(http)
+    const { db } = rtdb.default(http)
     server.get('*', (req, res) => {
       return handle(req, res)
     })
