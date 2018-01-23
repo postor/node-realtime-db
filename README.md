@@ -6,13 +6,13 @@ realtime database for nodejs, specially for react. I mean firebase-lite or redux
 
 ```
 var app = require('http').createServer(handler)
-require('node-realtime-db')(app)
+require('@node-realtime-db/server')(app)
 ```
 
 ## client side
 
 ```
-import Db from 'node-realtime-db'
+import Db from '@node-realtime-db/client'
 
 const db = new Db('http://localhost/rtdb')
 
@@ -31,7 +31,7 @@ db.update('path.key.sub','z')
 ## react
 
 ```
-import {Provider} from 'react-node-realtime-db'
+import { Provider } from '@react-node-realtime-db/react'
 
 export default ()=>(<Provider db={dburl}>
   <App />
@@ -41,12 +41,13 @@ export default ()=>(<Provider db={dburl}>
 
 
 ```
-import {connect} from 'react-node-realtime-db'
+import { connect } from '@react-node-realtime-db/react'
 
 const App = (props)=>{
   const { a, b } = props
   return (<p>{JSON.stringify(data)}</p>)
 }
-export default connect({a:'path.a',b:'b'})(App)
+
+export default connect({a:'path.a', b:'b'})(App)
 
 ```
