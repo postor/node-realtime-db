@@ -2,18 +2,6 @@
 # yarn lockfile v1
 
 
-"@node-realtime-db/client@../client":
-  version "1.0.0"
-  dependencies:
-    object-path "^0.11.4"
-    socket.io-client "^2.0.4"
-
-"@node-realtime-db/server@../server":
-  version "1.0.0"
-  dependencies:
-    object-path "^0.11.4"
-    socket.io "^2.0.4"
-
 "@semantic-release/commit-analyzer@^3.0.1":
   version "3.0.7"
   resolved "http://registry.npm.taobao.org/@semantic-release/commit-analyzer/download/@semantic-release/commit-analyzer-3.0.7.tgz#dc955444a6d3d2ae9b8e21f90c2c80c4e9142b2f"
@@ -4245,6 +4233,20 @@ node-pre-gyp@^0.6.39:
     semver "^5.3.0"
     tar "^2.2.1"
     tar-pack "^3.4.0"
+
+node-realtime-db-client@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/node-realtime-db-client/-/node-realtime-db-client-1.0.0.tgz#9cdfb4c7dedcb2becc7021ae09780a9be952b632"
+  dependencies:
+    object-path "^0.11.4"
+    socket.io-client "^2.0.4"
+
+node-realtime-db-server@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/node-realtime-db-server/-/node-realtime-db-server-1.0.0.tgz#d46039b16628f0d8ead7e87b8066b8c154902055"
+  dependencies:
+    object-path "^0.11.4"
+    socket.io "^2.0.4"
 
 nopt@^4.0.0, nopt@^4.0.1:
   version "4.0.1"

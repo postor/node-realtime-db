@@ -3394,22 +3394,25 @@ node-pre-gyp@^0.6.39:
     tar "^2.2.1"
     tar-pack "^3.4.0"
 
-node-realtime-db-client@../client:
+node-realtime-db-client@^1.0.0:
   version "1.0.0"
+  resolved "https://registry.yarnpkg.com/node-realtime-db-client/-/node-realtime-db-client-1.0.0.tgz#9cdfb4c7dedcb2becc7021ae09780a9be952b632"
   dependencies:
     object-path "^0.11.4"
     socket.io-client "^2.0.4"
 
-node-realtime-db-react@../react:
+node-realtime-db-react@^1.0.0:
   version "1.0.0"
+  resolved "https://registry.yarnpkg.com/node-realtime-db-react/-/node-realtime-db-react-1.0.0.tgz#387dbe5c6746e64264f9f938c761f8af59dc23e3"
   dependencies:
-    node-realtime-db-client "../client"
+    node-realtime-db-client "^1.0.0"
     prop-types "^15.6.0"
     react "^16.2.0"
     react-dom "^16.2.0"
 
-node-realtime-db-server@../server:
+node-realtime-db-server@^1.0.0:
   version "1.0.0"
+  resolved "https://registry.yarnpkg.com/node-realtime-db-server/-/node-realtime-db-server-1.0.0.tgz#d46039b16628f0d8ead7e87b8066b8c154902055"
   dependencies:
     object-path "^0.11.4"
     socket.io "^2.0.4"
