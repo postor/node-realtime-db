@@ -14,14 +14,14 @@ class Db {
           value,
         })
       })
-      socket.on(`${eventPrifix}set`, async ({ path, value }) => {
-        await this.set(path, value)
+      socket.on(`${eventPrifix}set`, async ({ path, value, option }) => {
+        await this.set(path, value, option)
       })
     })
   }
 
-  async set(path, value) {
-    await this.adapter.set(path, value)
+  async set(path, value, option) {
+    await this.adapter.set(path, value, option)
     this.io.emit(`${eventPrifix}update`, {
       path,
       value,

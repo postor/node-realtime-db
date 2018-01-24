@@ -1,9 +1,14 @@
 import io from 'socket.io-client'
 import objectPath from 'object-path'
 
+import operations from './operations'
+
 const eventPrifix = '$rtdb$'
 
 class Db {
+
+  static operations = operations
+
   constructor(url, options = {}) {
     this.io = io(url, options)
     this.data = {}
@@ -24,7 +29,14 @@ class Db {
     })
   }
 
-  async set(path, value) {
+  /**
+   * 
+   * @param {string} path 
+   * @param {any} value 
+   * @param {Object} options 
+   * @param {string} options.operation 
+   */
+  async set(path, value, options) {
     return new Promise((resolve, reject) => {
       const cb = (data) => {
         if (data.path == path) {
@@ -33,7 +45,7 @@ class Db {
         }
       }
       this.io.on(`${eventPrifix}set`, cb)
-      this.io.emit(`${eventPrifix}set`, { path, value })
+      this.io.emit(`${eventPrifix}set`, { path, value, options })
     })
   }
 

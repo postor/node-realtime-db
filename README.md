@@ -31,7 +31,7 @@ db.update('path.key.sub','z')
 ## react
 
 ```
-import { Provider } from '@react-node-realtime-db/react'
+import { Provider } from 'react-node-realtime-db-react'
 
 export default ()=>(<Provider db={dburl}>
   <App />
@@ -41,7 +41,7 @@ export default ()=>(<Provider db={dburl}>
 
 
 ```
-import { connect } from '@react-node-realtime-db/react'
+import { connect } from 'react-node-realtime-db-react'
 
 const App = (props)=>{
   const { a, b } = props
@@ -61,3 +61,8 @@ yarn && yarn dev
 ```
 
 then open http://localhost:3000 and use more tabs to check is it real time
+
+
+## update options
+
+incr/decr for number and push/splice for array on server refer [options api](./operations)
