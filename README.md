@@ -65,4 +65,4 @@ then open http://localhost:3000 and use more tabs to check is it real time
 
 ## update options
 
-incr/decr for number and push/splice for array on server refer [options api](./operations)
+incr/decr for number and push/splice for array on server refer [options api](./operations.md)
