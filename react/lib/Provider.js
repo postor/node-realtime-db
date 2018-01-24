@@ -1,5 +1,5 @@
 import React, { Component, Children } from 'react'
-import Db from '@node-realtime-db/client'
+import Db from 'node-realtime-db-client'
 import PropTypes from 'prop-types'
 
 const serverSide = typeof window == 'undefined'

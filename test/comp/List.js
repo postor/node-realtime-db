@@ -1,4 +1,4 @@
-import { connect } from '@node-realtime-db/react'
+import { connect } from 'node-realtime-db-react'
 
 const List = (props) => {
   const { messages } = props

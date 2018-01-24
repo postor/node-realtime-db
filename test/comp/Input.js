@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { connect } from '@node-realtime-db/react'
+import { connect } from 'node-realtime-db-react'
 
 class Input extends Component {
 

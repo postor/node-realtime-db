@@ -1,5 +1,5 @@
 {
-  "name": "@node-realtime-db/client",
+  "name": "node-realtime-db-client",
   "version": "1.0.0",
   "description": "realtime database for nodejs, specially for react. I mean firebase-lite or redux-server",
   "main": "dist/Db.js",

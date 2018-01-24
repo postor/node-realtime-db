@@ -1,5 +1,5 @@
 {
-  "name": "@node-realtime-db/react",
+  "name": "node-realtime-db-react",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -12,13 +12,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "node-realtime-db-client": "../client",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
-    "@node-realtime-db/client": "../client",
-    "@node-realtime-db/server": "../server",
+    "node-realtime-db-server": "../server",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
