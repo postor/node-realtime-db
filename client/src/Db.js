@@ -33,10 +33,10 @@ class Db {
    * 
    * @param {string} path 
    * @param {any} value 
-   * @param {Object} options 
-   * @param {string} options.operation 
+   * @param {Object} option
+   * @param {string} option.operation 
    */
-  async set(path, value, options) {
+  async set(path, value, option) {
     return new Promise((resolve, reject) => {
       const cb = (data) => {
         if (data.path == path) {
@@ -45,7 +45,7 @@ class Db {
         }
       }
       this.io.on(`${eventPrifix}set`, cb)
-      this.io.emit(`${eventPrifix}set`, { path, value, options })
+      this.io.emit(`${eventPrifix}set`, { path, value, option })
     })
   }
 
