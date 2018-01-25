@@ -13,7 +13,21 @@ app.prepare()
   .then(() => {
     const server = express()
     const http = Server(server)
-    const { db } = rtdb.default(http)
+    const { db } = rtdb.default(http, {}, {
+      auth: (user = {}, event, eventData = {}, rtdb) => {
+        const { path = '', option } = eventData
+        if (path == 'messages' || path.startsWith('messages.')) {
+          if (event != '$rtdb$set') {
+            return true
+          }
+          if (option !== 'unshift') {
+            console.log({ user, event, eventData, result: (user.secret == '123456') })
+            return user.secret == '123456'
+          }
+        }
+        return true
+      }
+    })
     server.get('*', (req, res) => {
       return handle(req, res)
     })

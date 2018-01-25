@@ -41,7 +41,11 @@ class Db {
       const cb = (data) => {
         if (data.path == path) {
           this.io.removeListener(`${eventPrifix}set`, cb)
-          resolve(data.value)
+          if (data.error) {
+            reject(data.error)
+          } else {
+            resolve(data.value)
+          }
         }
       }
       this.io.on(`${eventPrifix}set`, cb)

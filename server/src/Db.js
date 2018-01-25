@@ -1,21 +1,64 @@
 import Memory from './adapters/Memory'
 
 const eventPrifix = '$rtdb$'
+const userPath = 'user'
 
 class Db {
-  constructor(io, initalData = {}, Adapter = Memory) {
+  constructor(io, initalData = {}, Adapter = Memory, auth = () => true) {
     this.io = io
     this.adapter = new Adapter(initalData)
+    this.auth = auth
     this.io.on('connection', (socket) => {
-      socket.on(`${eventPrifix}get`, async ({ path }) => {
+      socket.rtdb = new Memory({})
+      socket.on(`${eventPrifix}get`, async (eventData) => {
+        //auth
+        if (!await this.doAuth(socket, `${eventPrifix}get`, eventData)) {
+          return
+        }
+
+        const { path = '' } = eventData
+
+        //user data
+        if (path.startsWith(userPath)) {
+          const value = await socket.rtdb.get(path)
+          socket.emit(`${eventPrifix}get`, {
+            path,
+            value,
+          })
+        }
+
+        //shared data
         const value = await this.get(path)
         this.io.emit(`${eventPrifix}get`, {
           path,
           value,
         })
       })
-      socket.on(`${eventPrifix}set`, async ({ path, value, option }) => {
-        await this.set(path, value, option)
+
+      socket.on(`${eventPrifix}set`, async (eventData) => {
+        //auth
+        if (!await this.doAuth(socket, `${eventPrifix}set`, eventData)) {
+          return
+        }
+
+        const { path = '', value, option } = eventData
+
+        //user data
+        if (path.startsWith(userPath)) {
+          const newValue = await socket.rtdb.set(path, value, option)
+          socket.emit(`${eventPrifix}update`, {
+            path,
+            value: newValue,
+          })
+          return
+        }
+
+        //shared data
+        const val = await this.set(path, value, option)
+        this.io.emit(`${eventPrifix}set`, {
+          path,
+          value: val,
+        })
       })
     })
   }
@@ -26,10 +69,34 @@ class Db {
       path,
       value: newValue,
     })
+    return newValue
   }
 
   async get(path) {
     return await this.adapter.get(path)
+  }
+
+  async doAuth(socket, event, eventData) {
+    const authit = () => {
+      return new Promise((resolve, reject) => {
+        const rtn = this.auth(socket.rtdb.data.user, event, eventData, this)
+        if (rtn.then) {
+          rtn.then(resolve).catch(reject)
+        } else {
+          resolve(rtn)
+        }
+      })
+    }
+
+    const rtn = await authit()
+    if (!rtn) {
+      socket.emit(event, {
+        ...eventData,
+        error: 'auth fail',
+      })
+      return false
+    }
+    return true
   }
 }
 

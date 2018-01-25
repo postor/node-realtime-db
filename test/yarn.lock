@@ -3410,9 +3410,8 @@ node-realtime-db-react@1.0.5:
     react "^16.2.0"
     react-dom "^16.2.0"
 
-node-realtime-db-server@1.0.3:
+node-realtime-db-server@../server:
   version "1.0.3"
-  resolved "http://registry.npm.taobao.org/node-realtime-db-server/download/node-realtime-db-server-1.0.3.tgz#51156228b7a6ab1a93d26a47a920436f93482e66"
   dependencies:
     object-path "^0.11.4"
     socket.io "^2.0.4"
