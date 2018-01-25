@@ -25,14 +25,14 @@ class Input extends Component {
         value={message}
         onChange={(e) => {
           this.setState({
-            message: e.target.value.trim(),
+            message: e.target.value,
           })
         }} />
       <div>
         <label>name: {name}</label>
         <button
           onClick={() => {
-            if (!message) {
+            if (!message.trim()) {
               return
             }
             set('messages', {

@@ -2,6 +2,8 @@
 
 realtime database for nodejs, specially for react. I mean firebase-lite or redux-server
 
+![screenshot](./screenshot.gif)
+
 ## server side
 
 ```
