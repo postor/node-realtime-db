@@ -6,7 +6,10 @@ import Input from '../comp/Input'
 
 export default () => {
   return (<Provider>
-    <div>
+    <div style={{
+      maxWidth: '900px',
+      margin: '0 auto',
+    }}>
       <h1>live chat</h1>
       <List />
       <Input />
