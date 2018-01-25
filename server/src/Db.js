@@ -21,10 +21,10 @@ class Db {
   }
 
   async set(path, value, option) {
-    await this.adapter.set(path, value, option)
+    const newValue = await this.adapter.set(path, value, option)
     this.io.emit(`${eventPrifix}update`, {
       path,
-      value,
+      value: newValue,
     })
   }
 
