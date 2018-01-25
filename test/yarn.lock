@@ -3394,24 +3394,25 @@ node-pre-gyp@^0.6.39:
     tar "^2.2.1"
     tar-pack "^3.4.0"
 
-node-realtime-db-client@^1.0.3:
-  version "1.0.3"
-  resolved "http://registry.npm.taobao.org/node-realtime-db-client/download/node-realtime-db-client-1.0.3.tgz#6b7d61afa56f1d950ac9ae3b8accc46965f5e343"
+node-realtime-db-client@^1.1.0:
+  version "1.1.3"
+  resolved "http://registry.npm.taobao.org/node-realtime-db-client/download/node-realtime-db-client-1.1.3.tgz#2bdd5500a23e1f2fa70a8de7270eae562e1ba9e3"
   dependencies:
     object-path "^0.11.4"
     socket.io-client "^2.0.4"
 
-node-realtime-db-react@1.0.5:
-  version "1.0.5"
-  resolved "http://registry.npm.taobao.org/node-realtime-db-react/download/node-realtime-db-react-1.0.5.tgz#fa0fa3523ce7fd978f60f1a4ce351e5900ea6845"
+node-realtime-db-react@^1.1.0:
+  version "1.1.0"
+  resolved "http://registry.npm.taobao.org/node-realtime-db-react/download/node-realtime-db-react-1.1.0.tgz#854bd0f80daddabeb56babc9ca47e162649d2936"
   dependencies:
-    node-realtime-db-client "^1.0.3"
+    node-realtime-db-client "^1.1.0"
     prop-types "^15.6.0"
     react "^16.2.0"
     react-dom "^16.2.0"
 
-node-realtime-db-server@../server:
-  version "1.0.3"
+node-realtime-db-server@^1.1.0:
+  version "1.1.0"
+  resolved "http://registry.npm.taobao.org/node-realtime-db-server/download/node-realtime-db-server-1.1.0.tgz#db10f12f96d1e9fab7f19640e589858e852a86ef"
   dependencies:
     object-path "^0.11.4"
     socket.io "^2.0.4"
