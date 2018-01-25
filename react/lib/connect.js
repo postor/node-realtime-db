@@ -30,7 +30,6 @@ export default (mapPaths) => (C) => {
           [k]: v
         })
         const unwatch = db.watch(p, (val) => {
-          console.log('update happen', { p, val })
           this.setState({
             [k]: val,
           })
