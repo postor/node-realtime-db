@@ -4,9 +4,12 @@ const eventPrifix = '$rtdb$'
 const userPath = 'user'
 
 class Db {
-  constructor(io, initalData = {}, Adapter = Memory, auth = () => true) {
+  constructor(io, dbOptions) {
+
+    const { Adapter = Memory, auth = () => true } = dbOptions
+
     this.io = io
-    this.adapter = new Adapter(initalData)
+    this.adapter = new Adapter(dbOptions)
     this.auth = auth
     this.io.on('connection', (socket) => {
       socket.rtdb = new Memory({})

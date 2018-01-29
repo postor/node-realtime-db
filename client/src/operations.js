@@ -1,4 +1,5 @@
 export default {
+  set: 'set',
   incr: 'incr',
   decr: 'decr',
   push: 'push',

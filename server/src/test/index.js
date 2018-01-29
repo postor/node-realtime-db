@@ -52,6 +52,8 @@ setTimeout(async () => {
   console.log(`'y'=${JSON.stringify(await db.get('y'))}(should be [5])`)
   await db.set('z', [0, 0, 5, 6, 7, 8], operations.splice)
   console.log(`'z'=${JSON.stringify(await db.get('z'))}(should be [5,6,7,8])`)
+  
+  console.log(`'z1'=${JSON.stringify(await db.get('z1'))}(should be undefined)`)
   await db.set('z1', [0, 0, [5, 6]], operations.splice)
   console.log(`'z1'=${JSON.stringify(await db.get('z1'))}(should be [[5,6]])`)
 
