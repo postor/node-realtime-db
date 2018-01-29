@@ -28,9 +28,3 @@ require('node-realtime-db-server')(app,{},{
 
 ```
 auth can be async
-
-## `local` 
-
-`db.set('local',val)` or `db.set('local.path.to.something',val,option)`
-
-store things that only current page know, when you set value under this path, value not updated to server
