@@ -4,6 +4,8 @@ realtime database for nodejs, specially for react. I mean firebase-lite or redux
 
 ![screenshot](./screenshot.gif)
 
+[online demo](https://test-qvothdqjjn.now.sh/)
+
 ## server side
 
 ```
