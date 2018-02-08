@@ -61,7 +61,6 @@ class JsonAdapter extends Adapter {
 
   async splice(path, args, value) {
     const data = await fs.readJson(this.jsonFilePath)
-    console.log({ value, path, args })
     const arr = [...value]
     arr.splice(...args)
     objectPath.set(data, path, arr)
