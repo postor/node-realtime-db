@@ -4,7 +4,7 @@ realtime database for nodejs, support for react. I mean firebase-lite or redux-s
 
 node.js的实时数据库，支持react，有点像firebase和redux的合体
 
-![screenshot](../screenshot.gif)
+![screenshot](https://raw.githubusercontent.com/postor/node-realtime-db/master/screenshot.gif)
 
 [online demo](https://test-qvothdqjjn.now.sh/)
 
@@ -15,4 +15,4 @@ var app = require('http').createServer(handler)
 require('node-realtime-db-server')(app)
 ```
 
-[more info | 查看更多](../README.md)
+[more info | 查看更多](https://github.com/postor/node-realtime-db)

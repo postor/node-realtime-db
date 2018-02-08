@@ -1,6 +1,6 @@
 {
   "name": "node-realtime-db-server",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "realtime database for nodejs, specially for react. I mean firebase-lite or redux-server",
   "main": "dist/index.js",
   "scripts": {

@@ -31,13 +31,15 @@ class Memory extends Adapter {
   }
 
   async push(path, item, value) {
-    objectPath.set(this.data, path, [...value, item])
-    return value
+    const newValue = [...value, item]
+    objectPath.set(this.data, path, newValue)
+    return newValue
   }
 
   async unshift(path, item, value) {
-    objectPath.set(this.data, path, [item, ...value])
-    return value
+    const newValue = [item, ...value]
+    objectPath.set(this.data, path, newValue)
+    return newValue
   }
 
   async splice(path, args, value) {
