@@ -3,6 +3,7 @@ const Server = require('http').Server
 const express = require('express')
 const next = require('next')
 const rtdb = require('node-realtime-db-server')
+const JsonAdapter = require('./JsonAdapter')
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
@@ -13,7 +14,7 @@ app.prepare()
   .then(() => {
     const server = express()
     const http = Server(server)
-    const { db } = rtdb.default(http, {}, {
+    const { db } = rtdb.default(http, { Adapter: JsonAdapter }, {
       auth: (user = {}, event, eventData = {}, rtdb) => {
         const { path = '', option } = eventData
         if (path == 'messages' || path.startsWith('messages.')) {

@@ -1,6 +1,7 @@
 import SocketIO from 'socket.io'
 import Db from './Db'
 
+export { default as Adapter } from './adapters/Adapter'
 
 export default (httpServer, ioOptions = {}, dbOptions = {}) => {
 
