@@ -84,4 +84,50 @@ special paths, right now `user` only, [special paths](./special-paths.md)
 
 特殊的路径，目前只有`user`，[special paths](./special-paths.md)
 
-## custom adapters
+## custom adapters | 定制数据适配器
+
+data by default stored in memory, you may want to store your data to disk or mongodb or else, then you can custom db adapter
+
+默认数据都存放在内存中了，如果你想把数据存到磁盘或者mongodb或者其他地方，你可以自己定制数据适配器
+
+```
+const Adapter = require('node-realtime-db-server').Adapter
+
+class CustomAdapter extends Adapter {
+  constructor(dbOptions = {}) {
+    super(dbOptions)
+    //use dbOptions for your init    
+  }
+  async get(path) {
+    //return value of path
+  }
+  async update(path, newValue) {
+    //update and return new value
+  }
+  async incr(path, toIncr, value) {
+    //incr and return new value
+  }
+  async decr(path, toDecr, value) {
+    //decr and return new value
+  }
+  async push(path, item, value) {
+    //push and return new value
+  }
+  async unshift(path, item, value) {
+    //push and return new value
+  }
+  async splice(path, args, value) {
+    //splice and return new value
+  }
+}
+
+rtdb.default(http, {}, {
+  Adapter: CustomAdapter,
+  //and your custom dbOptions
+})
+
+```
+
+here is an example to store data in a json file [JsonAdapter.js](./test/JsonAdapter.js)
+
+这是一个把数据保存到 json 文件的例子 [JsonAdapter.js](./test/JsonAdapter.js)

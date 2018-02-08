@@ -28,6 +28,12 @@ app.prepare()
           }
         }
         return true
+      },
+      onChange: (rtdb, socket, path, newValue) => {
+        const historySize = 10
+        if (path == 'messages' && newValue.length > historySize) {
+          rtdb.set('messages', [historySize, newValue.length - historySize], 'splice').then(console.log).catch(console.log)
+        }
       }
     })
     server.get('*', (req, res) => {
