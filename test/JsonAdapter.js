@@ -1,12 +1,12 @@
 const fs = require('fs-extra')
+const join = require('path').join
 const objectPath = require('object-path')
 const Adapter = require('node-realtime-db-server').Adapter
 
 class JsonAdapter extends Adapter {
   constructor(dbOptions = {}) {
     super(dbOptions)
-
-    const { initalData = {}, filePath = './node-realtime-db.json' } = dbOptions
+    const { initalData = {}, filePath = join(process.cwd(), 'node-realtime-db.json') } = dbOptions
     this.jsonFilePath = filePath
 
     const exist = fs.existsSync(filePath)
@@ -45,16 +45,18 @@ class JsonAdapter extends Adapter {
 
   async push(path, item, value) {
     const data = await fs.readJson(this.jsonFilePath)
-    objectPath.set(data, path, [...value, item])
+    const newValue = [...value, item]
+    objectPath.set(data, path, newValue)
     await fs.writeJson(this.jsonFilePath, data)
-    return value
+    return newValue
   }
 
   async unshift(path, item, value) {
     const data = await fs.readJson(this.jsonFilePath)
-    objectPath.set(data, path, [item, ...value])
+    const newValue = [item, ...value]
+    objectPath.set(data, path, newValue)
     await fs.writeJson(this.jsonFilePath, data)
-    return value
+    return newValue
   }
 
   async splice(path, args, value) {
@@ -66,3 +68,5 @@ class JsonAdapter extends Adapter {
     return arr
   }
 }
+
+module.exports = JsonAdapter

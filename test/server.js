@@ -14,7 +14,8 @@ app.prepare()
   .then(() => {
     const server = express()
     const http = Server(server)
-    const { db } = rtdb.default(http, { Adapter: JsonAdapter }, {
+    const { db } = rtdb.default(http, {}, {
+      Adapter: JsonAdapter,
       auth: (user = {}, event, eventData = {}, rtdb) => {
         const { path = '', option } = eventData
         if (path == 'messages' || path.startsWith('messages.')) {
