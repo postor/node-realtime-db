@@ -6,7 +6,7 @@ const userPath = 'user'
 class Db {
   constructor(io, dbOptions) {
 
-    const { Adapter = Memory, auth = () => true } = dbOptions
+    const { Adapter = Memory, auth = () => true, onChange = () => { } } = dbOptions
 
     this.io = io
     this.adapter = new Adapter(dbOptions)
@@ -53,6 +53,8 @@ class Db {
             path,
             value: newValue,
           })
+          //onChange
+          onChange(this, socket, path, newValue)
           return
         }
 
@@ -62,6 +64,9 @@ class Db {
           path,
           value: val,
         })
+
+        //onChange
+        onChange(this, socket, path, val)
       })
     })
   }
