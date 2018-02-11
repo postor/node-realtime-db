@@ -1,15 +1,14 @@
-# node-realtime-db
+# node-realtime-db-client
 
-realtime database for nodejs, specially for react. I mean firebase-lite or redux-server
+realtime database for nodejs, support for react. I mean firebase-lite or redux-server
 
-## server side
+node.js的实时数据库，支持react，有点像firebase和redux的合体
 
-```
-var app = require('http').createServer(handler)
-require('node-realtime-db-server')(app)
-```
+![screenshot](https://raw.githubusercontent.com/postor/node-realtime-db/master/screenshot.gif)
 
-## client side
+[online demo](https://test-qvothdqjjn.now.sh/)
+
+## client side | 客户端
 
 ```
 import Db from 'node-realtime-db-client'
@@ -28,36 +27,4 @@ db.update('path.key.sub','z')
 
 ```
 
-## react
-
-```
-import { Provider } from 'react-node-realtime-db-react'
-
-export default ()=>(<Provider db={dburl}>
-  <App />
-</Provider>)
-
-```
-
-
-```
-import { connect } from 'react-node-realtime-db-react'
-
-const App = (props)=>{
-  const { a, b } = props
-  return (<p>{JSON.stringify(data)}</p>)
-}
-
-export default connect({a:'path.a', b:'b'})(App)
-
-```
-
-## test
-
-```
-git clone https://github.com/postor/node-realtime-db.git
-cd test
-yarn && yarn dev
-```
-
-then open http://localhost:3000 and use more tabs to check is it real time
+[more info | 查看更多](https://github.com/postor/node-realtime-db)
