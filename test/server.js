@@ -36,6 +36,11 @@ app.prepare()
         }
       }
     })
+
+    setInterval(async () => {
+      const counter = await db.set('counter', 1, 'incr')
+      console.log({ counter })
+    }, 1000)
     server.get('*', (req, res) => {
       return handle(req, res)
     })
