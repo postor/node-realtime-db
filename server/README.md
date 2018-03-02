@@ -1,8 +1,8 @@
 # node-realtime-db-server
 
-realtime database for nodejs, support for react. I mean firebase-lite or redux-server
+realtime database for nodejs, support for react. I mean firebase-lite or redux-server, browser will automatically update when data change on server
 
-node.js的实时数据库，支持react，有点像firebase和redux的合体
+node.js的实时数据库，支持react，有点像firebase和redux的合体， 当服务端数据变化的时候浏览器中的相关内容会自动更新
 
 ![screenshot](https://raw.githubusercontent.com/postor/node-realtime-db/master/screenshot.gif)
 
