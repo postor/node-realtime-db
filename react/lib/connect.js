@@ -43,7 +43,7 @@ export default (mapPaths) => (C) => {
     render() {
       const { db } = this.context
       const set = (...args) => db.set(...args)
-      return (<C {...{ ...this.props, ...this.state, set }} />)
+      return (<C {...{ ...this.props, ...this.state, set, db, io: db.io }} />)
     }
 
     componentWillUnmount() {
