@@ -4,12 +4,25 @@ import fn2async from '../utils/fn2async'
 class Adapter {
   constructor(dbOptions = {}) {
     this._operationMap = this.getOriginalHandles(dbOptions)
+    this.lock = false
+    this.useLock = dbOptions.useLock
+    this.lockRetryTimeout = dbOptions.lockRetryTimeout || 100
   }
 
   async set(path, value, option) {
+    if (this.useLock) {
+      while (this.lock) {
+        await new Promise((resolve) => setTimeout(() => resolve(), this.lockRetryTimeout))
+      }
+      this.lock = true
+    }
     const op = getOperation(option)
     if (this._operationMap[op]) {
-      return await this._operationMap[op](path, value)
+      const rtn = await this._operationMap[op](path, value)
+      if (this.useLock) {
+        this.lock = false
+      }
+      return rtn
     }
     throw `not implemented option: ${op}`
   }
